@@ -1,0 +1,25 @@
+<%= form_for(@kartu) do |f| %>
+  <% if @kartu.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@kartu.errors.count, "error") %> prohibited this kartu from being saved:</h2>
+
+      <ul>
+      <% @kartu.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nomor %><br>
+    <%= f.text_field :nomor %>
+  </div>
+   <div class="field">
+    <%= f.label :saldo %><br>
+    <%= f.text_field :saldo %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nomor:</strong>
+  <%= @kartu.nomor %>
+  <%= @kartu.saldo %>
+</p>
+
+<%= link_to 'Edit', edit_kartu_path(@kartu) %> |
+<%= link_to 'Back', kartus_path %>
