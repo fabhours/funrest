@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Address</th>
+      <th>Game_Name</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -12,6 +13,7 @@
     <% @macs.each do |mac| %>
       <tr>
         <td><%= mac.address %></td>
+        <td><%= mac.game.name %></td>
         <td><%= link_to 'Show', mac %></td>
         <td><%= link_to 'Edit', edit_mac_path(mac) %></td>
         <td><%= link_to 'Destroy', mac, method: :delete, data: { confirm: 'Are you sure?' } %></td>
