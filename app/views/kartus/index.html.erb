@@ -5,6 +5,9 @@
     <tr>
       <th>Nomor</th>
       <th>Saldo</th>
+      <th>Bonus</th>
+      <th>Freegame</th>
+      <th>Eticket</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,6 +17,9 @@
       <tr>
         <td><%= kartu.nomor %></td>
         <td><%= kartu.saldo %></td>
+        <td><%= kartu.bonus %></td>
+        <td><%= kartu.freegame %></td>
+        <td><%= kartu.eticket %></td>
         <td><%= link_to 'Show', kartu %></td>
         <td><%= link_to 'Edit', edit_kartu_path(kartu) %></td>
         <td><%= link_to 'Destroy', kartu, method: :delete, data: { confirm: 'Are you sure?' } %></td>

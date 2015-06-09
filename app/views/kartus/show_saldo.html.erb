@@ -1,11 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Nomor:</strong>
-  <%= @kartu.nomor %>
-  <strong>Saldo:</strong>
-  <%= @kartu.saldo %>
-</p>
+
+	<strong>Nomor:</strong>
+	<%= @kartu.nomor %>
+	<strong>Saldo:</strong>
+	<%= @kartu.saldo %>
+	<strong>Bonus:</strong>
+	<%= @kartu.bonus %>
+	<strong>Freegame:</strong>
+	<%= @kartu.freegame %>
+	<strong>Eticket:</strong>
+	<%= @kartu.eticket %>
+
 
 <%= link_to 'Edit', edit_kartu_path(@kartu) %> |
 <%= link_to 'Back', kartus_path %>

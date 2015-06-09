@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150608072925) do
+ActiveRecord::Schema.define(version: 20150608085145) do
 
   create_table "cards", force: true do |t|
     t.string   "number"
@@ -35,6 +35,9 @@ ActiveRecord::Schema.define(version: 20150608072925) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "saldo"
+    t.integer  "bonus"
+    t.integer  "freegame"
+    t.integer  "eticket"
   end
 
   create_table "macs", force: true do |t|

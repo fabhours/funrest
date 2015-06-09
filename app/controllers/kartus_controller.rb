@@ -18,6 +18,20 @@ class KartusController < ApplicationController
     @kartu = Kartu.find_by_nomor(url)
   end
 
+  def update_saldo
+    url = URI.escape(params[:nomor])
+    @kartu = Kartu.find_by_nomor(url)
+    respond_to do |format|
+      if @kartu.update(kartu_params)
+        format.html { redirect_to kartus_url, notice: 'Kartu was successfully updated.' }
+        format.json { render :show, status: :ok, location: @kartu }
+      else
+        format.html { render :edit }
+        format.json { render json: @kartu.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # GET /kartus/new
   def new
     @kartu = Kartu.new
@@ -75,6 +89,6 @@ class KartusController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def kartu_params
-      params.require(:kartu).permit(:nomor, :saldo)
+      params.require(:kartu).permit(:nomor, :saldo, :bonus, :freegame, :eticket)
     end
 end

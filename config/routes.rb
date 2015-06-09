@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :kartus
   get 'saldo/:nomor' => 'kartus#show_saldo' , as: :show_saldo
+  put 'saldo_update/:nomor' => 'kartus#update_saldo' , as: :update_saldo
 
   resources :games
 
