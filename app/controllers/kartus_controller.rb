@@ -14,17 +14,17 @@ class KartusController < ApplicationController
   end
 
   def show_saldo
-    url = URI.escape(params[:nomor])
-    @kartu = Kartu.find_by_nomor(url)
+    @kartu = Kartu.find_by_nomor(params[:nomor])
   end
 
   def update_saldo
-    url = URI.escape(params[:nomor])
-    @kartu = Kartu.find_by_nomor(url)
+    @kartu = Kartu.find_by_nomor(params[:nomor])
     respond_to do |format|
       if @kartu.update(kartu_params)
-        format.html { redirect_to kartus_url, notice: 'Kartu was successfully updated.' }
+        @sisa_saldo = @kartu.saldo
+        # format.html { redirect_to kartus_url, notice: 'Kartu was successfully updated.' }
         format.json { render :show, status: :ok, location: @kartu }
+        # format.js
       else
         format.html { render :edit }
         format.json { render json: @kartu.errors, status: :unprocessable_entity }

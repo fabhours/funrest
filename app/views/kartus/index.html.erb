@@ -16,7 +16,7 @@
     <% @kartus.each do |kartu| %>
       <tr>
         <td><%= kartu.nomor %></td>
-        <td><%= kartu.saldo %></td>
+        <td id="current_saldo"><%= kartu.saldo %></td>
         <td><%= kartu.bonus %></td>
         <td><%= kartu.freegame %></td>
         <td><%= kartu.eticket %></td>

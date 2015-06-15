@@ -1,17 +1,21 @@
 Rails.application.routes.draw do
+  get 'pages/main'
+
   resources :kartus
   get 'saldo/:nomor' => 'kartus#show_saldo' , as: :show_saldo
   put 'saldo_update/:nomor' => 'kartus#update_saldo' , as: :update_saldo
 
   resources :games
+  put 'games/:id/:address' => 'games#set_game_mac' , as: :set_game_mac
 
   resources :macs
+  get 'get_game_id/:address' => 'macs#get_id' 
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'pages#main'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

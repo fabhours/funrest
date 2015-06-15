@@ -1,0 +1,1 @@
+json.extract! @mac,:address, :game_id

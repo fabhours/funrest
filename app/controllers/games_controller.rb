@@ -12,6 +12,17 @@ class GamesController < ApplicationController
   def show
   end
 
+  def set_game_mac
+    @game = Game.find(params[:id])
+    @game.mac = Mac.find(params[:address])
+    respond_to do |format|
+      if @game.save
+        format.html { redirect_to root_path, notice: 'Game was successfully associated.' }
+        format.json { render :show, status: :ok, location: @game }
+      end
+    end
+  end
+
   # GET /games/new
   def new
     @game = Game.new
@@ -28,7 +39,7 @@ class GamesController < ApplicationController
 
     respond_to do |format|
       if @game.save
-        format.html { redirect_to @game, notice: 'Game was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Game was successfully created.' }
         format.json { render :show, status: :created, location: @game }
       else
         format.html { render :new }
@@ -42,7 +53,7 @@ class GamesController < ApplicationController
   def update
     respond_to do |format|
       if @game.update(game_params)
-        format.html { redirect_to games_url, notice: 'Game was successfully updated.' }
+        format.html { redirect_to root_path, notice: 'Game was successfully updated.' }
         format.json { render :show, status: :ok, location: @game }
       else
         format.html { render :edit }
@@ -56,7 +67,7 @@ class GamesController < ApplicationController
   def destroy
     @game.destroy
     respond_to do |format|
-      format.html { redirect_to games_url, notice: 'Game was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: 'Game was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +80,6 @@ class GamesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def game_params
-      params.require(:game).permit(:name, :price1)
+      params.require(:game).permit(:name, :price1, :price2, :price3, :price4)
     end
 end

@@ -5,11 +5,16 @@ class MacsController < ApplicationController
   # GET /macs.json
   def index
     @macs = Mac.all
+    @games = Game.all
   end
 
   # GET /macs/1
   # GET /macs/1.json
   def show
+  end
+
+  def get_id
+    @mac= Mac.find_by_address(params[:address])
   end
 
   # GET /macs/new
@@ -28,7 +33,7 @@ class MacsController < ApplicationController
 
     respond_to do |format|
       if @mac.save
-        format.html { redirect_to @mac, notice: 'Mac was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Mac was successfully created.' }
         format.json { render :show, status: :created, location: @mac }
       else
         format.html { render :new }
@@ -42,7 +47,7 @@ class MacsController < ApplicationController
   def update
     respond_to do |format|
       if @mac.update(mac_params)
-        format.html { redirect_to @mac, notice: 'Mac was successfully updated.' }
+        format.html { redirect_to root_path, notice: 'Mac was successfully updated.' }
         format.json { render :show, status: :ok, location: @mac }
       else
         format.html { render :edit }
@@ -56,7 +61,7 @@ class MacsController < ApplicationController
   def destroy
     @mac.destroy
     respond_to do |format|
-      format.html { redirect_to macs_url, notice: 'Mac was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: 'Mac was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

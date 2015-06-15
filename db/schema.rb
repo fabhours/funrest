@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150608085145) do
+ActiveRecord::Schema.define(version: 20150612101002) do
 
   create_table "cards", force: true do |t|
     t.string   "number"
@@ -28,6 +28,9 @@ ActiveRecord::Schema.define(version: 20150608085145) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "price1"
+    t.integer  "price2"
+    t.integer  "price3"
+    t.integer  "price4"
   end
 
   create_table "kartus", force: true do |t|

@@ -11,15 +11,37 @@
 
   <tbody>
     <% @macs.each do |mac| %>
-      <tr>
-        <td><%= mac.address %></td>
-        <td><%= mac.game.name %></td>
-        <td><%= link_to 'Show', mac %></td>
-        <td><%= link_to 'Edit', edit_mac_path(mac) %></td>
-        <td><%= link_to 'Destroy', mac, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+    <tr>
+      <td><%= mac.address %></td>
+      <% if mac.game != nil %>
+      <td><%= mac.game.name %></td>
+      <td><%= link_to 'Show', mac %></td>
+      <td><%= link_to 'Edit', edit_mac_path(mac) %></td>
+      <td><%= link_to 'Destroy', mac, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <%else%>
+      <td> Not Set </td>
+      <td></td>
+     <td><%= link_to 'Edit', edit_mac_path(mac) %></td>
+      <td><%= link_to 'Destroy', mac, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td>Available Game: <% available = 0 %>
+                          <%@games.each do|game|%>
+                            <%if game.mac == nil and game.name != "coin dispenser"%>
+                              <%=link_to game.name, set_game_mac_path(game,mac), method: :put %>
+                              , 
+                              <% available += 1 %>
+                            <% end %> 
+                          <% end %>
+
+                          <% if available == 0 %> 
+                            no game available,
+                            <%=link_to " CREATE ONE?", new_game_path %> 
+                          <% end %>
+     </td>
+     <% end %>
+
+   </tr>
+   <% end %>
+ </tbody>
 </table>
 
 <br>
