@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get 'pages/main'
+
+  get 'xgc/:address/:nomor'  => 'pages#xgc'
 
   resources :kartus
   get 'saldo/:nomor' => 'kartus#show_saldo' , as: :show_saldo
