@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   get 'xgc/:address/:nomor'  => 'pages#xgc'
 
   resources :kartus
