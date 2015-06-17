@@ -1,5 +1,5 @@
 module Api::V1
-  class EventsController < ApplicationController
+  class EventsController < KartusController
 	def xgc
 		@gameID = Mac.find_by_address(params[:address]).game_id
 		@currentCard = Kartu.find_by_nomor(params[:nomor])
@@ -44,13 +44,9 @@ module Api::V1
           format.json { render json: @kartu.errors, status: :unprocessable_entity }
         end
        end
+       super
     end
 
-    private
-    
-    def kartu_params
-      params.require(:kartu).permit(:nomor, :saldo, :bonus, :freegame, :eticket)
-    end
 
   end
 end
