@@ -3,9 +3,10 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       get 'events/xgc/:address/:nomor' => 'events#xgc'
+      put 'events/xsc/:nomor' => 'events#xsc'
     end
   end
-  
+
   resources :kartus
   get 'saldo/:nomor' => 'kartus#show_saldo' , as: :show_saldo
   put 'saldo_update/:nomor' => 'kartus#update_saldo' , as: :update_saldo
