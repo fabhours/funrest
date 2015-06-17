@@ -1,5 +1,4 @@
-module Api::V1
-  class EventsController < ApplicationController
+class EventsController < ApplicationController
 	def xgc
 		@gameID = Mac.find_by_address(params[:address]).game_id
 		@currentCard = Kartu.find_by_nomor(params[:nomor])
@@ -32,7 +31,4 @@ module Api::V1
 			format.json
 		end
 	end
-
-
-  end
 end

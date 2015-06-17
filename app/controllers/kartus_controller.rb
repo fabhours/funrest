@@ -32,6 +32,22 @@ class KartusController < ApplicationController
     end
   end
 
+  def add_saldo
+    @kartu = Kartu.find_by_nomor(params[:nomor])
+    sal = @kartu.saldo + params[:saldo]
+    respond_to do |format|
+      if @kartu.update(saldo: sal)
+        @sisa_saldo = @kartu.saldo
+        # format.html { redirect_to kartus_url, notice: 'Kartu was successfully updated.' }
+        format.json { render :show, status: :ok, location: @kartu }
+        # format.js
+      else
+        format.html { render :edit }
+        format.json { render json: @kartu.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # GET /kartus/new
   def new
     @kartu = Kartu.new
@@ -92,3 +108,4 @@ class KartusController < ApplicationController
       params.require(:kartu).permit(:nomor, :saldo, :bonus, :freegame, :eticket)
     end
 end
+
