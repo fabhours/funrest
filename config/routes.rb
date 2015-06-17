@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
 
-  get 'xgc/:address/:nomor'  => 'pages#xgc'
-
+  get 'events/xgc/:address/:nomor' => 'events#xgc', constraints: {:subdomain => "api"}
+  
   resources :kartus
   get 'saldo/:nomor' => 'kartus#show_saldo' , as: :show_saldo
   put 'saldo_update/:nomor' => 'kartus#update_saldo' , as: :update_saldo
