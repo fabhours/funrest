@@ -46,5 +46,11 @@ module Api::V1
        end
     end
 
+    private
+    
+    def kartu_params
+      params.require(:kartu).permit(:nomor, :saldo, :bonus, :freegame, :eticket)
+    end
+
   end
 end
