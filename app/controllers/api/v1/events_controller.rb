@@ -1,3 +1,4 @@
+module Api::V1
 class EventsController < ApplicationController
 	def xgc
 		@gameID = Mac.find_by_address(params[:address]).game_id
@@ -31,4 +32,5 @@ class EventsController < ApplicationController
 			format.json
 		end
 	end
+end
 end

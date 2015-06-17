@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
-
-  get 'events/xgc/:address/:nomor' => 'events#xgc', constraints: {:subdomain => "api"}
+  namespace :api do
+    namespace :v1 do
+      get 'events/xgc/:address/:nomor' => 'events#xgc'
+    end
+  end
   
   resources :kartus
   get 'saldo/:nomor' => 'kartus#show_saldo' , as: :show_saldo
