@@ -17,7 +17,7 @@ class KartusController < ApplicationController
     @kartu = Kartu.find_by_nomor(params[:nomor])
   end
 
-  def update_saldo
+  def xsc
     @kartu = Kartu.find_by_nomor(params[:nomor])
     respond_to do |format|
       if @kartu.update(kartu_params)
