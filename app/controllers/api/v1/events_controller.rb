@@ -38,7 +38,7 @@ module Api::V1
       respond_to do |format|
         if @kartu.update(kartu_params)
           @sisa_saldo = @kartu.saldo 
-          format.json { render :show, status: :ok}
+          format.json { render :show, status: :ok, location: @kartu}
         else
           format.html { render :edit }
           format.json { render json: @kartu.errors, status: :unprocessable_entity }
